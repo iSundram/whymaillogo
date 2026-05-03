@@ -35,186 +35,106 @@
         animation: none;
     }
     
-        .path-1 {
-            stroke: rgb(100, 150, 220);
-            stroke-dasharray: 9609;
-            stroke-dashoffset: 9609;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 0.0s forwards,
-                fadeInFill 1.0s ease 1.2s forwards,
-                fadeOutStroke 0.8s ease 1.5s forwards;
-        }
-        
-        .path-2 {
-            stroke: rgb(100, 150, 220);
-            stroke-dasharray: 4292;
-            stroke-dashoffset: 4292;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 0.15s forwards,
-                fadeInFill 1.0s ease 1.3499999999999999s forwards,
-                fadeOutStroke 0.8s ease 1.65s forwards;
-        }
-        
-        .path-3 {
-            stroke: rgb(65,124,211);
-            stroke-dasharray: 3926;
-            stroke-dashoffset: 3926;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards,
-                fadeInFill 1.0s ease 1.5s forwards,
-                fadeOutStroke 0.8s ease 1.8s forwards;
-        }
-        
-        .path-4 {
-            stroke: rgb(39,71,117);
-            stroke-dasharray: 2351;
-            stroke-dashoffset: 2351;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 0.44999999999999996s forwards,
-                fadeInFill 1.0s ease 1.65s forwards,
-                fadeOutStroke 0.8s ease 1.95s forwards;
-        }
-        
-        .path-5 {
-            stroke: rgb(100, 150, 220);
-            stroke-dasharray: 2764;
-            stroke-dashoffset: 2764;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards,
-                fadeInFill 1.0s ease 1.7999999999999998s forwards,
-                fadeOutStroke 0.8s ease 2.1s forwards;
-        }
-        
-        .path-6 {
-            stroke: rgb(39,71,117);
-            stroke-dasharray: 4408;
-            stroke-dashoffset: 4408;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 0.75s forwards,
-                fadeInFill 1.0s ease 1.95s forwards,
-                fadeOutStroke 0.8s ease 2.25s forwards;
-        }
-        
-        .path-7 {
-            stroke: rgb(39,71,117);
-            stroke-dasharray: 3005;
-            stroke-dashoffset: 3005;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 0.8999999999999999s forwards,
-                fadeInFill 1.0s ease 2.0999999999999996s forwards,
-                fadeOutStroke 0.8s ease 2.4s forwards;
-        }
-        
-        .path-8 {
-            stroke: rgb(30,39,49);
-            stroke-dasharray: 1591;
-            stroke-dashoffset: 1591;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 1.05s forwards,
-                fadeInFill 1.0s ease 2.25s forwards,
-                fadeOutStroke 0.8s ease 2.55s forwards;
-        }
-        
-        .path-9 {
-            stroke: rgb(100, 150, 220);
-            stroke-dasharray: 9609;
-            stroke-dashoffset: 9609;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards,
-                fadeInFill 1.0s ease 2.4s forwards,
-                fadeOutStroke 0.8s ease 2.7s forwards;
-        }
-        
-        .path-10 {
-            stroke: rgb(100, 150, 220);
-            stroke-dasharray: 4292;
-            stroke-dashoffset: 4292;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 1.3499999999999999s forwards,
-                fadeInFill 1.0s ease 2.55s forwards,
-                fadeOutStroke 0.8s ease 2.8499999999999996s forwards;
-        }
-        
-        .path-11 {
-            stroke: rgb(65,124,211);
-            stroke-dasharray: 3926;
-            stroke-dashoffset: 3926;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 1.5s forwards,
-                fadeInFill 1.0s ease 2.7s forwards,
-                fadeOutStroke 0.8s ease 3.0s forwards;
-        }
-        
-        .path-12 {
-            stroke: rgb(39,71,117);
-            stroke-dasharray: 2351;
-            stroke-dashoffset: 2351;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 1.65s forwards,
-                fadeInFill 1.0s ease 2.8499999999999996s forwards,
-                fadeOutStroke 0.8s ease 3.15s forwards;
-        }
-        
-        .path-13 {
-            stroke: rgb(100, 150, 220);
-            stroke-dasharray: 2764;
-            stroke-dashoffset: 2764;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 1.7999999999999998s forwards,
-                fadeInFill 1.0s ease 3.0s forwards,
-                fadeOutStroke 0.8s ease 3.3s forwards;
-        }
-        
-        .path-14 {
-            stroke: rgb(39,71,117);
-            stroke-dasharray: 4408;
-            stroke-dashoffset: 4408;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 1.95s forwards,
-                fadeInFill 1.0s ease 3.15s forwards,
-                fadeOutStroke 0.8s ease 3.45s forwards;
-        }
-        
-        .path-15 {
-            stroke: rgb(39,71,117);
-            stroke-dasharray: 3005;
-            stroke-dashoffset: 3005;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 2.1s forwards,
-                fadeInFill 1.0s ease 3.3s forwards,
-                fadeOutStroke 0.8s ease 3.6s forwards;
-        }
-        
-        .path-16 {
-            stroke: rgb(30,39,49);
-            stroke-dasharray: 1591;
-            stroke-dashoffset: 1591;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 2.25s forwards,
-                fadeInFill 1.0s ease 3.45s forwards,
-                fadeOutStroke 0.8s ease 3.75s forwards;
-        }
-        
-        .path-17 {
-            stroke: rgb(30,39,49);
-            stroke-dasharray: 407;
-            stroke-dashoffset: 407;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 2.4s forwards,
-                fadeInFill 1.0s ease 3.5999999999999996s forwards,
-                fadeOutStroke 0.8s ease 3.9s forwards;
-        }
-        
-        .path-18 {
-            stroke: rgb(30,39,49);
-            stroke-dasharray: 407;
-            stroke-dashoffset: 407;
-            animation: 
-                drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 2.55s forwards,
-                fadeInFill 1.0s ease 3.75s forwards,
-                fadeOutStroke 0.8s ease 4.05s forwards;
-        }
-        </style></defs>
+            .path-1 {
+                stroke: rgb(100, 150, 220);
+                stroke-dasharray: 9609;
+                stroke-dashoffset: 9609;
+                animation: 
+                    drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 0.0s forwards,
+                    fadeInFill 1.0s ease 1.2s forwards,
+                    fadeOutStroke 0.8s ease 1.5s forwards;
+            }
+            
+            .path-2 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.25s forwards;
+            }
+            
+            .path-3 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.3s forwards;
+            }
+            
+            .path-4 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.35s forwards;
+            }
+            
+            .path-5 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.4s forwards;
+            }
+            
+            .path-6 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.45s forwards;
+            }
+            
+            .path-7 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.5s forwards;
+            }
+            
+            .path-8 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.55s forwards;
+            }
+            
+            .path-9 {
+                stroke: rgb(100, 150, 220);
+                stroke-dasharray: 9609;
+                stroke-dashoffset: 9609;
+                animation: 
+                    drawStroke 2.0s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards,
+                    fadeInFill 1.0s ease 1.6s forwards,
+                    fadeOutStroke 0.8s ease 1.9s forwards;
+            }
+            
+            .path-10 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.65s forwards;
+            }
+            
+            .path-11 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.7s forwards;
+            }
+            
+            .path-12 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.75s forwards;
+            }
+            
+            .path-13 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.8s forwards;
+            }
+            
+            .path-14 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.85s forwards;
+            }
+            
+            .path-15 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.9s forwards;
+            }
+            
+            .path-16 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 1.95s forwards;
+            }
+            
+            .path-17 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 2.0s forwards;
+            }
+            
+            .path-18 {
+                stroke: none;
+                animation: fadeInFill 1.0s ease 2.05s forwards;
+            }
+            </style></defs>
 
   
   <path fill="rgb(0,0,0)" d="M 0 0 L 4096 0 L 4096 4096 L 0 4096 L 0 0 z" />
