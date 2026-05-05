@@ -54,10 +54,10 @@ def combine_logos():
     
     # 5. Scaling and Alignment
     icon_size = 4096
-    text_scale = 3.5 # Slightly larger for better readability
+    text_scale = 5.0 # Scale up to match icon height (768 * 5.0 = 3840)
     text_height = 768 * text_scale
     vertical_offset = (icon_size - text_height) / 2
-    gap = 400 # More generous gap
+    gap = 600 # Wider gap for better visual balance
     total_width = icon_size + gap + (1024 * text_scale)
     
     # 6. Assemble
