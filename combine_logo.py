@@ -62,8 +62,8 @@ def combine_logos():
     
     tx = target_text_left - (text_min_x * text_scale)
     
-    # User felt text was a bit below center, so we shift it up slightly (e.g. -120 units)
-    ty_adjustment = -120
+    # User felt text was a bit below center, so we shift it up slightly (e.g. -240 units)
+    ty_adjustment = -240
     ty = icon_center_y - (text_center_y * text_scale) + ty_adjustment
     
     content_min_x = icon_min_x
