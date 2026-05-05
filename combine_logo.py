@@ -9,7 +9,7 @@ def combine_logos():
     with open('logo-text.svg', 'r') as f:
         text_content = f.read()
         
-    # 1. Extract Icon Defs (Gradients)
+    # 1. Extract Icon Defs
     defs_match = re.search(r'<defs>(.*?)</defs>', icon_content, re.DOTALL)
     icon_defs = defs_match.group(1) if defs_match else ""
     
@@ -22,15 +22,14 @@ def combine_logos():
         full_p_match = re.search(re.escape(p) + r'.*?/>', icon_content, re.DOTALL)
         if full_p_match:
             icon_paths.append(full_p_match.group(0))
-        
+            
     # 3. Clean up Text Content
     text_content = re.sub(r'<image.*?>.*?</image>', '', text_content, flags=re.DOTALL)
     text_content = re.sub(r'<image.*?/>', '', text_content)
-    
     text_gradients = re.findall(r'<linearGradient.*?>.*?</linearGradient>', text_content, re.DOTALL)
     text_defs_str = "\n".join(text_gradients)
     
-    # 4. Extract Text Inner Group (logo-group)
+    # 4. Extract Text Inner Group
     group_match = re.search(r'(<g id="logo-group">.*?</g>)\s*</svg>', text_content, re.DOTALL)
     if not group_match:
         text_inner_match = re.search(r'<svg .*?>(.*?)</svg>', text_content, re.DOTALL)
@@ -43,31 +42,47 @@ def combine_logos():
     for grad in text_gradients:
         text_inner = text_inner.replace(grad, "")
     
-    # 5. Scaling and Alignment
-    # The actual bounding box of the text inside logo-text.svg:
-    min_x = 332.8
-    min_y = 342.9
-    actual_text_width = 371.6
-    actual_text_height = 40.6
+    # 5. Alignment & Margins Calculation
+    icon_min_x = 384.398
+    icon_min_y = 1192.36
+    icon_max_x = 3711.602
+    icon_max_y = 3057.73
+    icon_center_y = (icon_min_y + icon_max_y) / 2
     
-    icon_size = 4096
-    text_scale = 27.5  # Reduced by half as requested
+    text_min_x = 332.82
+    text_min_y = 342.915
+    text_max_x = 704.447
+    text_max_y = 383.507
+    text_center_y = (text_min_y + text_max_y) / 2
     
-    scaled_text_width = actual_text_width * text_scale
-    scaled_text_height = actual_text_height * text_scale
+    text_scale = 27.5
+    gap = 600
     
-    vertical_offset = (icon_size - scaled_text_height) / 2
-    gap = 800
-    total_width = icon_size + gap + scaled_text_width
+    target_text_left = icon_max_x + gap
+    
+    tx = target_text_left - (text_min_x * text_scale)
+    ty = icon_center_y - (text_center_y * text_scale)
+    
+    content_min_x = icon_min_x
+    content_max_x = tx + (text_max_x * text_scale)
+    
+    content_min_y = min(icon_min_y, ty + (text_min_y * text_scale))
+    content_max_y = max(icon_max_y, ty + (text_max_y * text_scale))
+    
+    margin = 600
+    viewbox_min_x = content_min_x - margin
+    viewbox_min_y = content_min_y - margin
+    viewbox_width = (content_max_x - content_min_x) + (2 * margin)
+    viewbox_height = (content_max_y - content_min_y) + (2 * margin)
     
     # 6. Assemble
     full_svg = f"""<?xml version="1.0" encoding="UTF-8"?>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 {total_width} {icon_size}" preserveAspectRatio="xMidYMid meet">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="{viewbox_min_x} {viewbox_min_y} {viewbox_width} {viewbox_height}" preserveAspectRatio="xMidYMid meet">
   <defs>
     {icon_defs}
     {text_defs_str}
   </defs>
-  <rect width="100%" height="100%" fill="white" />
+  <rect x="{viewbox_min_x}" y="{viewbox_min_y}" width="{viewbox_width}" height="{viewbox_height}" fill="white" />
   
   <!-- Icon Part -->
   <g id="icon-part">
@@ -75,7 +90,7 @@ def combine_logos():
   </g>
   
   <!-- Text Part -->
-  <g id="text-part" transform="translate({icon_size + gap}, {vertical_offset}) scale({text_scale}) translate({-min_x}, {-min_y})">
+  <g id="text-part" transform="translate({tx}, {ty}) scale({text_scale})">
     {text_inner}
   </g>
 </svg>
@@ -83,7 +98,7 @@ def combine_logos():
     
     with open('logo-full.svg', 'w') as f:
         f.write(full_svg)
-    print("logo-full.svg recreated with proper offset zeroing.")
+    print("logo-full.svg recreated with exact alignment and margins.")
 
 if __name__ == '__main__':
     combine_logos()
