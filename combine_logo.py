@@ -51,7 +51,7 @@ def combine_logos():
     actual_text_height = 40.6
     
     icon_size = 4096
-    text_scale = 65.0  # Make it prominent
+    text_scale = 32.5  # Reduced by half as requested
     
     scaled_text_width = actual_text_width * text_scale
     scaled_text_height = actual_text_height * text_scale
