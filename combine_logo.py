@@ -55,13 +55,16 @@ def combine_logos():
     text_max_y = 383.507
     text_center_y = (text_min_y + text_max_y) / 2
     
-    text_scale = 27.5
+    text_scale = 25.0
     gap = 600
     
     target_text_left = icon_max_x + gap
     
     tx = target_text_left - (text_min_x * text_scale)
-    ty = icon_center_y - (text_center_y * text_scale)
+    
+    # User felt text was a bit below center, so we shift it up slightly (e.g. -120 units)
+    ty_adjustment = -120
+    ty = icon_center_y - (text_center_y * text_scale) + ty_adjustment
     
     content_min_x = icon_min_x
     content_max_x = tx + (text_max_x * text_scale)
