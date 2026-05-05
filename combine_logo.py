@@ -14,51 +14,51 @@ def combine_logos():
     icon_defs = defs_match.group(1) if defs_match else ""
     
     # 2. Extract Icon Paths
-    # We take all paths that are NOT the white background
     icon_paths = []
-    # Find all path tags, matching correctly even if they have spaces or newlines
     all_paths = re.findall(r'<path\s+[^>]*?>', icon_content, re.DOTALL)
     for p in all_paths:
         if 'fill="rgb(255,255,255)"' in p:
             continue
-        # Get the full tag including closing if it exists (though here they are self-closing)
-        # Re-find the full tag to be safe
         full_p_match = re.search(re.escape(p) + r'.*?/>', icon_content, re.DOTALL)
         if full_p_match:
             icon_paths.append(full_p_match.group(0))
         
     # 3. Clean up Text Content
-    # Remove empty image tags correctly
     text_content = re.sub(r'<image.*?>.*?</image>', '', text_content, flags=re.DOTALL)
     text_content = re.sub(r'<image.*?/>', '', text_content)
     
-    # Extract any top-level linearGradients in logo-text.svg
     text_gradients = re.findall(r'<linearGradient.*?>.*?</linearGradient>', text_content, re.DOTALL)
     text_defs_str = "\n".join(text_gradients)
     
     # 4. Extract Text Inner Group (logo-group)
-    # We want exactly the <g id="logo-group"> part to be clean
     group_match = re.search(r'(<g id="logo-group">.*?</g>)\s*</svg>', text_content, re.DOTALL)
     if not group_match:
-        # Fallback to general inner content if logo-group not found
         text_inner_match = re.search(r'<svg .*?>(.*?)</svg>', text_content, re.DOTALL)
         text_inner = text_inner_match.group(1) if text_inner_match else ""
     else:
         text_inner = group_match.group(1)
         
-    # Clean inner text from metadata/defs/images again to be double sure
     text_inner = re.sub(r'<metadata.*?>.*?</metadata>', '', text_inner, flags=re.DOTALL)
     text_inner = re.sub(r'<defs.*?>.*?</defs>', '', text_inner, flags=re.DOTALL)
     for grad in text_gradients:
         text_inner = text_inner.replace(grad, "")
     
     # 5. Scaling and Alignment
+    # The actual bounding box of the text inside logo-text.svg:
+    min_x = 332.8
+    min_y = 342.9
+    actual_text_width = 371.6
+    actual_text_height = 40.6
+    
     icon_size = 4096
-    text_scale = 5.0 # Scale up to match icon height (768 * 5.0 = 3840)
-    text_height = 768 * text_scale
-    vertical_offset = (icon_size - text_height) / 2
-    gap = 600 # Wider gap for better visual balance
-    total_width = icon_size + gap + (1024 * text_scale)
+    text_scale = 65.0  # Make it prominent
+    
+    scaled_text_width = actual_text_width * text_scale
+    scaled_text_height = actual_text_height * text_scale
+    
+    vertical_offset = (icon_size - scaled_text_height) / 2
+    gap = 800
+    total_width = icon_size + gap + scaled_text_width
     
     # 6. Assemble
     full_svg = f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -75,7 +75,7 @@ def combine_logos():
   </g>
   
   <!-- Text Part -->
-  <g id="text-part" transform="translate({icon_size + gap}, {vertical_offset}) scale({text_scale})">
+  <g id="text-part" transform="translate({icon_size + gap}, {vertical_offset}) scale({text_scale}) translate({-min_x}, {-min_y})">
     {text_inner}
   </g>
 </svg>
@@ -83,7 +83,7 @@ def combine_logos():
     
     with open('logo-full.svg', 'w') as f:
         f.write(full_svg)
-    print("logo-full.svg recreated with cleaner extraction.")
+    print("logo-full.svg recreated with proper offset zeroing.")
 
 if __name__ == '__main__':
     combine_logos()
